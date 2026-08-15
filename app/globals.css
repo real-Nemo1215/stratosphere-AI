@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Beige & Warm Earthy Theme */
+    --background: 40 33% 97%;       /* Very light warm beige */
+    --foreground: 20 14.3% 4.1%;    /* Dark brown/charcoal */
+    --card: 0 0% 100%;              /* Pure white for cards to pop off beige */
+    --card-foreground: 20 14.3% 4.1%;
+    --primary: 24 40% 24%;           /* Dark warm brown for buttons */
+    --primary-foreground: 36 33% 97%;
+    --secondary: 36 33% 90%;        /* Soft beige for secondary elements */
+    --secondary-foreground: 24 40% 24%;
+    --muted: 36 33% 90%;
+    --muted-foreground: 25 5% 45%;
+    --accent: 36 33% 85%;
+    --accent-foreground: 24 40% 24%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 33% 85%;
+    --input: 36 33% 85%;
+    --ring: 24 40% 24%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
