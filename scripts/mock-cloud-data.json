@@ -1,0 +1,960 @@
+[
+  {
+    "id": "lb-mqzlbY23JmN8POp0T",
+    "type": "ELB",
+    "region": "ap-south-1",
+    "monthly_cost": 51.1167279094589,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-2"
+      }
+    ],
+    "metrics": {
+      "request_count": 3652566,
+      "healthy_host_count": 5
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-rHjPVclYiOUN6BOWl",
+    "type": "EBS",
+    "region": "eu-west-1",
+    "monthly_cost": 62.972337325501684,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-32"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 0,
+      "attached_instance_id": null
+    },
+    "is_wasteful": true,
+    "waste_reason": "Unattached EBS Volume"
+  },
+  {
+    "id": "i-eP9zOEAtSkJAIZkew",
+    "type": "EC2",
+    "region": "eu-west-1",
+    "monthly_cost": 52.532262446312046,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-32"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 73.69693142155796,
+      "network_in": 1404711
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "lb-py1j1zwMA3j21KYee",
+    "type": "ELB",
+    "region": "eu-west-1",
+    "monthly_cost": 22.12775311677011,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-0"
+      }
+    ],
+    "metrics": {
+      "request_count": 4417491,
+      "healthy_host_count": 5
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-n4E4OFfwRzZwzsUi8",
+    "type": "EBS",
+    "region": "eu-west-1",
+    "monthly_cost": 88.96290920568227,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-46"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 663281,
+      "attached_instance_id": "i-wASGmizaJTjt0TDEs"
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "lb-MdOFGWqSgphWhBpMr",
+    "type": "ELB",
+    "region": "ap-south-1",
+    "monthly_cost": 22.511155324419043,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-5"
+      }
+    ],
+    "metrics": {
+      "request_count": 573395,
+      "healthy_host_count": 8
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-IQQnDLi1jS0c43xRe",
+    "type": "EBS",
+    "region": "us-west-2",
+    "monthly_cost": 54.057396740202215,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-16"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 828092,
+      "attached_instance_id": "i-N0BgDnEZRd2oU5Tdb"
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-NfcgUixrD7mVOaNZY",
+    "type": "EC2",
+    "region": "ap-south-1",
+    "monthly_cost": 116.52214013165909,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-56"
+      },
+      {
+        "key": "Environment",
+        "value": "dev"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 63.718309598880545,
+      "network_in": 3518431
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "lb-5FhtkAabJ8q4X805f",
+    "type": "ELB",
+    "region": "us-east-1",
+    "monthly_cost": 70.52686498080682,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-5"
+      }
+    ],
+    "metrics": {
+      "request_count": 4934992,
+      "healthy_host_count": 10
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-uOWmyQmcYnn0O6e0f",
+    "type": "EC2",
+    "region": "eu-west-1",
+    "monthly_cost": 196.11811110939493,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-6"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 29.99407775356798,
+      "network_in": 2666800
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "s3-bucket-l4wxxJzWHs",
+    "type": "S3",
+    "region": "us-west-2",
+    "monthly_cost": 150.70702883502713,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "app-logs-11"
+      }
+    ],
+    "metrics": {
+      "bucket_size_gb": 2376,
+      "has_lifecycle_policy": true,
+      "stale_objects_gb": 0
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-nT2jBqZ2t2X5u0bU3",
+    "type": "EBS",
+    "region": "us-west-2",
+    "monthly_cost": 84.98639690272594,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-38"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 984847,
+      "attached_instance_id": "i-hvoOCmmJbO8MmPQyJ"
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-afJ4UMp4mGmMq9Ke2",
+    "type": "EC2",
+    "region": "us-west-2",
+    "monthly_cost": 356.33281802253674,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-90"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 7.5650975144518275,
+      "network_in": 4302453
+    },
+    "is_wasteful": true,
+    "waste_reason": "Oversized EC2 Instance (High specs, low CPU)"
+  },
+  {
+    "id": "i-ZYmFyBnrQAKKEpSew",
+    "type": "EC2",
+    "region": "ap-south-1",
+    "monthly_cost": 211.631249405107,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-91"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 87.4927626418025,
+      "network_in": 1131086
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-Lv6Pbd3jSqIGNmng1",
+    "type": "EC2",
+    "region": "us-east-1",
+    "monthly_cost": 165.69164210082565,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-11"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 26.87288187580826,
+      "network_in": 1990900
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-Iysrf1jOUrBEqAAue",
+    "type": "EBS",
+    "region": "ap-south-1",
+    "monthly_cost": 82.63455433480998,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-0"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 0,
+      "attached_instance_id": null
+    },
+    "is_wasteful": true,
+    "waste_reason": "Unattached EBS Volume"
+  },
+  {
+    "id": "lb-J2zFqdj1QwrVAueL3",
+    "type": "ELB",
+    "region": "eu-west-1",
+    "monthly_cost": 37.364801669424104,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-5"
+      }
+    ],
+    "metrics": {
+      "request_count": 45,
+      "healthy_host_count": 8
+    },
+    "is_wasteful": true,
+    "waste_reason": "Idle Load Balancer (No Traffic)"
+  },
+  {
+    "id": "i-EH8zBzukSjPWlPXYx",
+    "type": "EC2",
+    "region": "us-west-2",
+    "monthly_cost": 267.6327670089362,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-26"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 5.361049578837178,
+      "network_in": 1973318
+    },
+    "is_wasteful": true,
+    "waste_reason": "Oversized EC2 Instance (High specs, low CPU)"
+  },
+  {
+    "id": "s3-bucket-1s9Ysp0GPB",
+    "type": "S3",
+    "region": "us-east-1",
+    "monthly_cost": 261.8274020091362,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "app-logs-17"
+      }
+    ],
+    "metrics": {
+      "bucket_size_gb": 169,
+      "has_lifecycle_policy": false,
+      "stale_objects_gb": 1961
+    },
+    "is_wasteful": true,
+    "waste_reason": "S3 Bucket missing Lifecycle Policy"
+  },
+  {
+    "id": "vol-Hoje93K1L91BwK0Uq",
+    "type": "EBS",
+    "region": "us-west-2",
+    "monthly_cost": 86.96998339348262,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-14"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 922220,
+      "attached_instance_id": "i-gVIcVi2BJ280nwVYZ"
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "lb-VrOqo9Uu9jreCPtO0",
+    "type": "ELB",
+    "region": "eu-west-1",
+    "monthly_cost": 35.82276641843883,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-3"
+      }
+    ],
+    "metrics": {
+      "request_count": 2939599,
+      "healthy_host_count": 8
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "db-En1wd6Otqx1zr9531",
+    "type": "RDS",
+    "region": "us-west-2",
+    "monthly_cost": 991.107834914696,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-8"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 36.344835057648616,
+      "active_connections": 76
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-17C9lc7TUxtQNdwuT",
+    "type": "EC2",
+    "region": "us-west-2",
+    "monthly_cost": 337.39807850673697,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-60"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 1.2793332725970337,
+      "network_in": 4231766
+    },
+    "is_wasteful": true,
+    "waste_reason": "Oversized EC2 Instance (High specs, low CPU)"
+  },
+  {
+    "id": "lb-RfNIAivVoCbyz90oQ",
+    "type": "ELB",
+    "region": "ap-south-1",
+    "monthly_cost": 89.33333484913695,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-5"
+      }
+    ],
+    "metrics": {
+      "request_count": 13,
+      "healthy_host_count": 5
+    },
+    "is_wasteful": true,
+    "waste_reason": "Idle Load Balancer (No Traffic)"
+  },
+  {
+    "id": "i-xUFspnzaGGG3yQeji",
+    "type": "EC2",
+    "region": "eu-west-1",
+    "monthly_cost": 265.418384803982,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-9"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 8.807453161428496,
+      "network_in": 4026158
+    },
+    "is_wasteful": true,
+    "waste_reason": "Oversized EC2 Instance (High specs, low CPU)"
+  },
+  {
+    "id": "db-GSL9nIxz0bvjWzLhW",
+    "type": "RDS",
+    "region": "ap-south-1",
+    "monthly_cost": 1493.840558923741,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-2"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 67.35238711947615,
+      "active_connections": 30
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "lb-wD9XepKMDy8z5pRpv",
+    "type": "ELB",
+    "region": "eu-west-1",
+    "monthly_cost": 43.15125163011936,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-2"
+      }
+    ],
+    "metrics": {
+      "request_count": 4008732,
+      "healthy_host_count": 6
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "s3-bucket-8Z78gerhRQ",
+    "type": "S3",
+    "region": "ap-south-1",
+    "monthly_cost": 223.6555254012198,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "app-logs-17"
+      }
+    ],
+    "metrics": {
+      "bucket_size_gb": 948,
+      "has_lifecycle_policy": true,
+      "stale_objects_gb": 0
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-ezcIiBRSNZCLRj3ZE",
+    "type": "EC2",
+    "region": "ap-south-1",
+    "monthly_cost": 411.068522745861,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-76"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 1.562137493898453,
+      "network_in": 3687207
+    },
+    "is_wasteful": true,
+    "waste_reason": "Idle EC2 Instance (CPU < 5%)"
+  },
+  {
+    "id": "db-nFnTE9Uh3CUldLs9e",
+    "type": "RDS",
+    "region": "us-east-1",
+    "monthly_cost": 320.53173649451895,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-10"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 26.273914118199958,
+      "active_connections": 22
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-AcHJPkNyxH3YWzQdz",
+    "type": "EBS",
+    "region": "us-west-2",
+    "monthly_cost": 17.13763041268492,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-2"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 0,
+      "attached_instance_id": null
+    },
+    "is_wasteful": true,
+    "waste_reason": "Unattached EBS Volume"
+  },
+  {
+    "id": "db-7mkU4ok0VZbwixHSI",
+    "type": "RDS",
+    "region": "eu-west-1",
+    "monthly_cost": 882.5520201999503,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-10"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 27.79137477320555,
+      "active_connections": 96
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-oO49boeQlZ6fwnS9J",
+    "type": "EC2",
+    "region": "us-west-2",
+    "monthly_cost": 393.6757559040115,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-88"
+      },
+      {
+        "key": "Environment",
+        "value": "dev"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 10.871329816126023,
+      "network_in": 272294
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-hCmpOBWi5bTiK36jg",
+    "type": "EBS",
+    "region": "us-west-2",
+    "monthly_cost": 33.07298113386014,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-35"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 859007,
+      "attached_instance_id": "i-XY2rhQdwHqq7nUEsg"
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "lb-dqcLaXIUXXqZTaJ7w",
+    "type": "ELB",
+    "region": "us-west-2",
+    "monthly_cost": 48.291622319977925,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-3"
+      }
+    ],
+    "metrics": {
+      "request_count": 936073,
+      "healthy_host_count": 4
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "lb-w0UmqTkIe4DfCUSDg",
+    "type": "ELB",
+    "region": "eu-west-1",
+    "monthly_cost": 44.344068661547425,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-3"
+      }
+    ],
+    "metrics": {
+      "request_count": 1428396,
+      "healthy_host_count": 6
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "db-Y4fAhfLZW7pxnpLld",
+    "type": "RDS",
+    "region": "us-east-1",
+    "monthly_cost": 1415.2100141021422,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-6"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 43.96997795301719,
+      "active_connections": 31
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-Z4vedm7mxhZbWPRi3",
+    "type": "EBS",
+    "region": "ap-south-1",
+    "monthly_cost": 67.69842192283029,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-44"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 0,
+      "attached_instance_id": null
+    },
+    "is_wasteful": true,
+    "waste_reason": "Unattached EBS Volume"
+  },
+  {
+    "id": "vol-HKb85Zdf1cXG4jgs9",
+    "type": "EBS",
+    "region": "eu-west-1",
+    "monthly_cost": 67.74190050119658,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-12"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 0,
+      "attached_instance_id": null
+    },
+    "is_wasteful": true,
+    "waste_reason": "Unattached EBS Volume"
+  },
+  {
+    "id": "db-qcTEZsb85nbL4RSz9",
+    "type": "RDS",
+    "region": "us-east-1",
+    "monthly_cost": 1086.6799978954605,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-7"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 23.66321831355918,
+      "active_connections": 46
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "s3-bucket-y4grlleek5",
+    "type": "S3",
+    "region": "eu-west-1",
+    "monthly_cost": 280.578961247819,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "app-logs-5"
+      }
+    ],
+    "metrics": {
+      "bucket_size_gb": 2821,
+      "has_lifecycle_policy": false,
+      "stale_objects_gb": 1981
+    },
+    "is_wasteful": true,
+    "waste_reason": "S3 Bucket missing Lifecycle Policy"
+  },
+  {
+    "id": "lb-v8pNomGP39YJ83ria",
+    "type": "ELB",
+    "region": "eu-west-1",
+    "monthly_cost": 81.51024167288529,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "public-lb-3"
+      }
+    ],
+    "metrics": {
+      "request_count": 2652986,
+      "healthy_host_count": 3
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "db-DxIPNDdu3zLpX4ig5",
+    "type": "RDS",
+    "region": "us-west-2",
+    "monthly_cost": 1167.6917297414316,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-9"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 63.26690591982318,
+      "active_connections": 50
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-5rv95pvvdQSkCsQZ6",
+    "type": "EC2",
+    "region": "eu-west-1",
+    "monthly_cost": 355.6147149954802,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-77"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 52.075210472281775,
+      "network_in": 1976769
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "s3-bucket-wjhBZJRO5B",
+    "type": "S3",
+    "region": "ap-south-1",
+    "monthly_cost": 297.86512594589925,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "app-logs-17"
+      }
+    ],
+    "metrics": {
+      "bucket_size_gb": 1190,
+      "has_lifecycle_policy": false,
+      "stale_objects_gb": 1637
+    },
+    "is_wasteful": true,
+    "waste_reason": "S3 Bucket missing Lifecycle Policy"
+  },
+  {
+    "id": "vol-KZcDou63yDcsJGoCk",
+    "type": "EBS",
+    "region": "ap-south-1",
+    "monthly_cost": 48.74978453338656,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-0"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 469107,
+      "attached_instance_id": "i-G19mdtoJw9dzef6QL"
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "db-8a7UcMwH4GG9FhqP6",
+    "type": "RDS",
+    "region": "eu-west-1",
+    "monthly_cost": 237.27615378514716,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-9"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 52.770185030533426,
+      "active_connections": 31
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "vol-0H70QxV4jG4YdnqhU",
+    "type": "EBS",
+    "region": "ap-south-1",
+    "monthly_cost": 94.108152463988,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "data-volume-2"
+      }
+    ],
+    "metrics": {
+      "volume_read_ops": 397022,
+      "attached_instance_id": "i-YNZqReTLpTKVjdq3d"
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "i-CXF1NKUxYBb1175Ud",
+    "type": "EC2",
+    "region": "us-east-1",
+    "monthly_cost": 202.68287943216703,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "web-server-23"
+      },
+      {
+        "key": "Environment",
+        "value": "staging"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 57.48167443230008,
+      "network_in": 1777601
+    },
+    "is_wasteful": false
+  },
+  {
+    "id": "db-BvsV8TiSu2WY9jKnE",
+    "type": "RDS",
+    "region": "eu-west-1",
+    "monthly_cost": 457.4431385477235,
+    "tags": [
+      {
+        "key": "Name",
+        "value": "prod-db-3"
+      },
+      {
+        "key": "Environment",
+        "value": "prod"
+      }
+    ],
+    "metrics": {
+      "cpu_utilization": 70.07051355794303,
+      "active_connections": 22
+    },
+    "is_wasteful": false
+  }
+]
