@@ -11,19 +11,26 @@ export default function AuditLogPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-primary">Audit Log</h1>
-        <p className="text-muted-foreground">Enterprise governance & compliance trail.</p>
+        <h1 className="text-3xl font-heading font-semibold tracking-tight text-foreground">Audit Log</h1>
+        <p className="text-muted-foreground mt-1 text-sm">Enterprise governance &amp; compliance trail.</p>
       </div>
-      <Card>
-        <CardHeader><CardTitle>Recent Activity</CardTitle></CardHeader>
-        <CardContent className="space-y-4">
+      <Card className="bg-card border-border">
+        <CardHeader className="p-6 pb-4">
+          <CardTitle className="text-lg">Recent Activity</CardTitle>
+        </CardHeader>
+        <CardContent className="p-6 pt-0 space-y-3">
           {logs.map((log) => (
-            <div key={log.id} className="flex justify-between items-center border-b pb-2">
+            <div key={log.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-lg bg-background border border-border">
               <div>
-                <p className="font-medium text-primary">{log.action} - {log.target}</p>
-                <p className="text-sm text-muted-foreground">By {log.user} at {log.time}</p>
+                <p className="font-heading font-semibold text-foreground text-sm">{log.action} - {log.target}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">By {log.user} at {log.time}</p>
               </div>
-              <Badge variant="outline">{log.action}</Badge>
+              <Badge
+                variant={log.action === "APPROVED" ? "success" : log.action === "REJECTED" ? "destructive" : "secondary"}
+                className="self-start sm:self-auto font-medium"
+              >
+                {log.action}
+              </Badge>
             </div>
           ))}
         </CardContent>

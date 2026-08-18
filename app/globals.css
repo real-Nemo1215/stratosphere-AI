@@ -2,36 +2,190 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Stratosphere AI — Warm Beige Theme ─────────────────────────────────── */
 @layer base {
   :root {
-    /* Beige & Warm Earthy Theme */
-    --background: 40 33% 97%;       /* Very light warm beige */
-    --foreground: 20 14.3% 4.1%;    /* Dark brown/charcoal */
-    --card: 0 0% 100%;              /* Pure white for cards to pop off beige */
-    --card-foreground: 20 14.3% 4.1%;
-    --primary: 24 40% 24%;           /* Dark warm brown for buttons */
-    --primary-foreground: 36 33% 97%;
-    --secondary: 36 33% 90%;        /* Soft beige for secondary elements */
-    --secondary-foreground: 24 40% 24%;
-    --muted: 36 33% 90%;
-    --muted-foreground: 25 5% 45%;
-    --accent: 36 33% 85%;
-    --accent-foreground: 24 40% 24%;
-    --destructive: 0 72% 50%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 36 33% 85%;
-    --input: 36 33% 85%;
-    --ring: 24 40% 24%;
+    /* ── Core surfaces (warm, soothing beige palette) ─────────────────── */
+    --background:          38 33% 97%;   /* Cream White   #faf8f4  */
+    --foreground:          25 30% 16%;   /* Deep Walnut   #2e2118  */
+
+    --card:                36 30% 93%;   /* Warm Linen    #ede9e1  */
+    --card-foreground:     25 30% 16%;
+
+    --popover:             38 33% 97%;
+    --popover-foreground:  25 30% 16%;
+
+    /* ── Brand / CTA ──────────────────────────────────────────────────── */
+    --primary:             25 40% 24%;   /* Dark Chestnut #4a2e18  */
+    --primary-foreground:  38 33% 97%;
+
+    /* ── Section alternates ───────────────────────────────────────────── */
+    --secondary:           35 28% 90%;   /* Warm Ivory    #e8e0d2  */
+    --secondary-foreground: 25 30% 16%;
+
+    /* ── Muted / subtle surfaces ──────────────────────────────────────── */
+    --muted:               37 20% 92%;   /* Buff          #edead4  – hover state */
+    --muted-foreground:    25 15% 48%;   /* Warm Slate    #7a6b5e  */
+
+    /* ── Accent — Amber Warm (replaces cold orange) ───────────────────── */
+    --accent:              32 85% 50%;   /* Warm Amber    #e08525  */
+    --accent-foreground:   38 33% 97%;
+
+    --destructive:         5 70% 46%;
+    --destructive-foreground: 38 33% 97%;
+
+    /* ── Borders ──────────────────────────────────────────────────────── */
+    --border:              35 22% 84%;   /* Warm Sand     #d8d0c4  */
+    --input:               35 22% 84%;
+    --ring:                32 85% 50%;   /* Warm Amber focus ring */
+
+    /* ── Radius — gentle rounding (not 0px) ──────────────────────────── */
     --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 10% 9%;         /* Deep warm charcoal/brown */
+    --foreground: 33 30% 89%;         /* Ivory text */
+    --card: 21 12% 12%;               /* Slightly lighter warm brown for cards */
+    --card-foreground: 33 30% 89%;
+    --popover: 20 10% 10%;
+    --popover-foreground: 33 30% 89%;
+    --primary: 33 30% 89%;            /* Ivory primary buttons in dark mode */
+    --primary-foreground: 20 10% 9%;
+    --secondary: 20 8% 15%;
+    --secondary-foreground: 33 30% 89%;
+    --muted: 20 8% 15%;
+    --muted-foreground: 30 5% 60%;    /* Warm muted grey text */
+    --accent: 16 100% 59%;            /* Ember Orange stays the same */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 33 30% 89%;
+    --border: 20 8% 18%;              /* Warm subtle borders */
+    --input: 20 8% 18%;
+    --ring: 16 100% 59%;              /* Ember orange focus ring */
   }
 }
 
+/* ─── Base Typography ─────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border;
+    box-shadow: none !important;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.65;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings — Inter Tight, regular weight, tight tracking */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-inter-tight), system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
+    color: hsl(var(--foreground));
+  }
+
+  /* Inline text links — warm amber underline */
+  a:not([class]) {
+    text-decoration-color: hsl(var(--accent));
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 0.2s;
+  }
+  a:not([class]):hover {
+    text-decoration-color: hsl(var(--primary));
+  }
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────────────── */
+@keyframes hero-reveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Utility Classes ─────────────────────────────────────────────────────── */
+@layer utilities {
+
+  /* Hero headline entrance */
+  .animate-hero-reveal {
+    animation: hero-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Scroll-reveal: initial hidden state */
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  }
+  .animate-fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Warm amber hover-underline for body links */
+  .warm-link {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+  }
+  .warm-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: hsl(var(--accent));
+    transition: width 0.22s ease-out;
+  }
+  .warm-link:hover::after {
+    width: 100%;
+  }
+
+  /* Step connector arrows — visually clear warm color */
+  .step-arrow-line {
+    height: 2px;
+    width: 28px;
+    background-color: hsl(var(--border));
+    flex-shrink: 0;
+  }
+  .step-arrow-head {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid hsl(var(--border));
+    flex-shrink: 0;
+    margin-left: -1px;
+  }
+  .step-arrow-line-v {
+    width: 2px;
+    height: 24px;
+    background-color: hsl(var(--border));
+  }
+  .step-arrow-head-v {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid hsl(var(--border));
+    margin-top: -1px;
   }
 }
