@@ -66,7 +66,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                   <item.icon
                     className={cn(
                       "h-4 w-4 shrink-0",
-                      active ? "text-amber" : "text-muted-foreground"
+                      active ? "text-primary" : "text-muted-foreground"
                     )}
                   />
                   <span className="font-heading tracking-[-0.01em]">
@@ -98,13 +98,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         {/* Top bar */}
         <header className="flex h-16 items-center justify-between border-b border-border bg-card/60 backdrop-blur-sm px-6 md:px-10">
           <div className="flex items-center gap-2 text-sm text-muted-foreground sm:hidden">
-            <Cloud className="h-5 w-5 text-amber" />
+            <Cloud className="h-5 w-5 text-primary" />
             <span className="font-heading font-semibold text-foreground">Stratosphere AI</span>
           </div>
 
           <div className="ml-auto flex items-center gap-3">
             <Badge variant="outline" className="hidden sm:inline-flex bg-background border-border text-muted-foreground text-xs py-1 px-3">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 mr-2 inline-block"></span>
+              <span className="h-2 w-2 rounded-full bg-accent mr-2 inline-block"></span>
               Mock AWS Connected
             </Badge>
             <Link href="/connect">

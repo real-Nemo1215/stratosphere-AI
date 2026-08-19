@@ -13,7 +13,7 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        /* Chestnut fill */
+        /* Cobalt Primary fill */
         default:
           "border-transparent bg-primary text-primary-foreground",
 
@@ -23,25 +23,25 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground",
 
-        /* Sand border, warm text */
+        /* Border, semantic text */
         outline:
           "border-border bg-transparent text-foreground",
 
-        /* Amber accent — for savings / highlights */
+        /* Mint accent — for savings / highlights */
         accent:
-          "border-transparent bg-amber text-cream",
+          "border-transparent bg-accent text-accent-foreground",
 
-        /* Risk — warm red-amber */
+        /* Risk — high risk destructive */
         risk:
-          "border-transparent bg-amber text-cream",
+          "border-transparent bg-destructive text-destructive-foreground",
 
         /* Eyebrow labels — subdued, uppercase */
         eyebrow:
           "border-border bg-transparent text-muted-foreground uppercase text-[10px] tracking-[0.08em] font-medium",
 
-        /* Success — soft green tint on beige */
+        /* Success — mint tint / accent */
         success:
-          "border-transparent bg-[#d4e8d0] text-[#2a5c26]",
+          "border-transparent bg-accent/20 text-accent font-medium dark:bg-accent/25 dark:text-accent-foreground",
       },
     },
     defaultVariants: {

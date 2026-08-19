@@ -87,7 +87,7 @@ export default function FindingsListPage() {
                   )}
                   {f.status === "pending" && (
                     <Badge
-                      variant={f.risk === "High" ? "risk" : f.risk === "Medium" ? "secondary" : "outline"}
+                      variant={f.risk === "High" ? "destructive" : f.risk === "Medium" ? "secondary" : "outline"}
                     >
                       Risk: {f.risk}
                     </Badge>
@@ -99,12 +99,12 @@ export default function FindingsListPage() {
               <p className="mb-4 text-sm text-muted-foreground">{f.issue}</p>
 
               {selectedCode === f.id && f.codeSnippet && (
-                <div className="mb-5 p-4 bg-[#231d18] text-[#f5eedf] font-mono text-xs rounded-lg overflow-x-auto border border-border/20">
-                  <div className="flex items-center gap-2 mb-2 text-[#c2b29f] text-xs pb-2 border-b border-white/10">
-                    <Code className="h-4 w-4 text-amber" />
+                <div className="mb-5 p-4 bg-muted/70 text-foreground font-mono text-xs rounded-lg overflow-x-auto border border-border">
+                  <div className="flex items-center gap-2 mb-2 text-muted-foreground text-xs pb-2 border-b border-border">
+                    <Code className="h-4 w-4 text-primary" />
                     AI Generated Remediation Script (boto3)
                   </div>
-                  <pre className="leading-relaxed">{f.codeSnippet}</pre>
+                  <pre className="leading-relaxed text-foreground">{f.codeSnippet}</pre>
                 </div>
               )}
 
@@ -113,7 +113,7 @@ export default function FindingsListPage() {
                   variant="outline"
                   className="bg-background border-border text-foreground font-semibold px-3 py-1"
                 >
-                  Est. Savings: <span className="text-amber ml-1">{f.savings}</span>
+                  Est. Savings: <span className="text-accent ml-1 font-semibold">{f.savings}</span>
                 </Badge>
 
                 {f.status === "pending" ? (
@@ -128,6 +128,7 @@ export default function FindingsListPage() {
                       {selectedCode === f.id ? "Hide Code" : "View AI Fix Code"}
                     </Button>
                     <Button
+                      variant="accent"
                       size="sm"
                       onClick={() => handleApprove(f.id)}
                     >

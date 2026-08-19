@@ -2,68 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Stratosphere AI — Warm Beige Theme ─────────────────────────────────── */
+/* ─── Stratosphere AI — Cobalt & Mint Theme ──────────────────────────────── */
 @layer base {
   :root {
-    /* ── Core surfaces (warm, soothing beige palette) ─────────────────── */
-    --background:          38 33% 97%;   /* Cream White   #faf8f4  */
-    --foreground:          25 30% 16%;   /* Deep Walnut   #2e2118  */
-
-    --card:                36 30% 93%;   /* Warm Linen    #ede9e1  */
-    --card-foreground:     25 30% 16%;
-
-    --popover:             38 33% 97%;
-    --popover-foreground:  25 30% 16%;
-
-    /* ── Brand / CTA ──────────────────────────────────────────────────── */
-    --primary:             25 40% 24%;   /* Dark Chestnut #4a2e18  */
-    --primary-foreground:  38 33% 97%;
-
-    /* ── Section alternates ───────────────────────────────────────────── */
-    --secondary:           35 28% 90%;   /* Warm Ivory    #e8e0d2  */
-    --secondary-foreground: 25 30% 16%;
-
-    /* ── Muted / subtle surfaces ──────────────────────────────────────── */
-    --muted:               37 20% 92%;   /* Buff          #edead4  – hover state */
-    --muted-foreground:    25 15% 48%;   /* Warm Slate    #7a6b5e  */
-
-    /* ── Accent — Amber Warm (replaces cold orange) ───────────────────── */
-    --accent:              32 85% 50%;   /* Warm Amber    #e08525  */
-    --accent-foreground:   38 33% 97%;
-
-    --destructive:         5 70% 46%;
-    --destructive-foreground: 38 33% 97%;
-
-    /* ── Borders ──────────────────────────────────────────────────────── */
-    --border:              35 22% 84%;   /* Warm Sand     #d8d0c4  */
-    --input:               35 22% 84%;
-    --ring:                32 85% 50%;   /* Warm Amber focus ring */
-
-    /* ── Radius — gentle rounding (not 0px) ──────────────────────────── */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 20 10% 9%;         /* Deep warm charcoal/brown */
-    --foreground: 33 30% 89%;         /* Ivory text */
-    --card: 21 12% 12%;               /* Slightly lighter warm brown for cards */
-    --card-foreground: 33 30% 89%;
-    --popover: 20 10% 10%;
-    --popover-foreground: 33 30% 89%;
-    --primary: 33 30% 89%;            /* Ivory primary buttons in dark mode */
-    --primary-foreground: 20 10% 9%;
-    --secondary: 20 8% 15%;
-    --secondary-foreground: 33 30% 89%;
-    --muted: 20 8% 15%;
-    --muted-foreground: 30 5% 60%;    /* Warm muted grey text */
-    --accent: 16 100% 59%;            /* Ember Orange stays the same */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 160 84% 39%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 33 30% 89%;
-    --border: 20 8% 18%;              /* Warm subtle borders */
-    --input: 20 8% 18%;
-    --ring: 16 100% 59%;              /* Ember orange focus ring */
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 32% 20%;
+    --input: 217 32% 20%;
+    --ring: 217 91% 60%;
   }
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: hsl(var(--popover)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  color: hsl(var(--popover-foreground)) !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
 }
 
 /* ─── Base Typography ─────────────────────────────────────────────────────── */
@@ -97,15 +89,15 @@
     color: hsl(var(--foreground));
   }
 
-  /* Inline text links — warm amber underline */
+  /* Inline text links — primary cobalt underline */
   a:not([class]) {
-    text-decoration-color: hsl(var(--accent));
+    text-decoration-color: hsl(var(--primary));
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
     transition: text-decoration-color 0.2s;
   }
   a:not([class]):hover {
-    text-decoration-color: hsl(var(--primary));
+    text-decoration-color: hsl(var(--accent));
   }
 }
 
@@ -139,27 +131,27 @@
     transform: translateY(0);
   }
 
-  /* Warm amber hover-underline for body links */
-  .warm-link {
+  /* Primary hover-underline for body links */
+  .brand-link {
     position: relative;
     text-decoration: none;
     color: inherit;
   }
-  .warm-link::after {
+  .brand-link::after {
     content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
     width: 0;
     height: 1.5px;
-    background-color: hsl(var(--accent));
+    background-color: hsl(var(--primary));
     transition: width 0.22s ease-out;
   }
-  .warm-link:hover::after {
+  .brand-link:hover::after {
     width: 100%;
   }
 
-  /* Step connector arrows — visually clear warm color */
+  /* Step connector arrows — visually clear color */
   .step-arrow-line {
     height: 2px;
     width: 28px;

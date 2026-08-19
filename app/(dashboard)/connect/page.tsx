@@ -39,7 +39,7 @@ export default function ConnectAccountPage() {
           </div>
 
           <div className="p-4 bg-background border border-border rounded-lg flex items-start gap-3">
-            <input type="checkbox" id="consent" className="mt-1 accent-amber" defaultChecked />
+            <input type="checkbox" id="consent" className="mt-1 accent-primary" defaultChecked />
             <Label htmlFor="consent" className="text-xs font-normal text-muted-foreground leading-relaxed cursor-pointer">
               I authorize Stratosphere AI to perform read-only scans of my cloud resources to detect cost waste.
             </Label>

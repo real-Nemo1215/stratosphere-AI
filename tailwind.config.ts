@@ -53,18 +53,6 @@ const config: Config = {
           DEFAULT:    "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-
-        /* ── Named beige palette (for direct Tailwind use) ─────────── */
-        "cream":    "#faf8f4",    /* page background */
-        "linen":    "#ede9e1",    /* card surface    */
-        "ivory":    "#e8e0d2",    /* section band    */
-        "buff":     "#edead4",    /* hover surface   */
-        "sand":     "#d8d0c4",    /* border          */
-        "walnut":   "#2e2118",    /* text            */
-        "chestnut": "#4a2e18",    /* CTA primary     */
-        "amber":    "#e08525",    /* accent          */
-        "slate-w":  "#7a6b5e",    /* muted text      */
-        "graphite": "#202020",    /* code bg         */
       },
 
       /* ── Border radius — gentle, consistent ──────────────────────── */

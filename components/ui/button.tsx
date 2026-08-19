@@ -4,10 +4,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 /**
- * Button — Warm Beige Theme
- * Primary:  Chestnut fill, cream text. Hover: lighten + border appears.
- * Outline:  Transparent + sand border. Hover: linen surface.
- * Ghost:    No border, transparent. Hover: buff surface.
+ * Button — Cobalt & Mint Theme
+ * Primary:  Cobalt Blue fill, white text. Hover: bg-primary/90.
+ * Accent:   Mint Green fill, white text. Hover: bg-accent/90.
+ * Outline:  Transparent + border. Hover: muted surface.
+ * Ghost:    No border, transparent. Hover: muted surface.
  */
 const buttonVariants = cva(
   [
@@ -22,16 +23,21 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        /* Chestnut fill → cream text */
+        /* Cobalt fill */
         default:
           "bg-primary text-primary-foreground border border-primary " +
-          "hover:bg-primary/85 hover:border-primary/85",
+          "hover:bg-primary/90 hover:border-primary/90",
+
+        /* Mint Green fill */
+        accent:
+          "bg-accent text-accent-foreground border border-accent " +
+          "hover:bg-accent/90 hover:border-accent/90",
 
         destructive:
           "bg-destructive text-destructive-foreground border border-destructive " +
           "hover:bg-destructive/90",
 
-        /* Sand border, transparent bg */
+        /* Border, transparent bg */
         outline:
           "border border-border bg-transparent text-foreground " +
           "hover:bg-muted hover:border-foreground/30",

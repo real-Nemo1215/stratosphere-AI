@@ -32,7 +32,7 @@ export default function DashboardOverview() {
                 {stat.title}
               </CardTitle>
               <div className="flex h-8 w-8 items-center justify-center rounded-md bg-background border border-border">
-                <stat.icon className="h-4 w-4 text-amber" />
+                <stat.icon className="h-4 w-4 text-primary" />
               </div>
             </CardHeader>
             <CardContent className="px-5 pb-5 pt-0">
@@ -48,7 +48,7 @@ export default function DashboardOverview() {
       <Card className="bg-card border-border">
         <CardHeader className="flex flex-row items-center justify-between p-6 pb-4 border-b border-border">
           <CardTitle className="text-lg">Top Findings</CardTitle>
-          <Link href="/findings" className="text-xs text-amber hover:underline inline-flex items-center gap-1 font-medium">
+          <Link href="/findings" className="text-xs text-primary hover:underline inline-flex items-center gap-1 font-medium">
             View all 3 findings <ArrowRight className="h-3 w-3" />
           </Link>
         </CardHeader>
@@ -61,8 +61,8 @@ export default function DashboardOverview() {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs font-semibold text-amber font-heading">+$320/mo</span>
-              <Badge variant="risk">High Risk</Badge>
+              <span className="text-xs font-semibold text-accent font-heading">+$320/mo</span>
+              <Badge variant="destructive">High Risk</Badge>
             </div>
           </div>
 

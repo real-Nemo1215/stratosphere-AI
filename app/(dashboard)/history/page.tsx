@@ -45,19 +45,19 @@ export default function HistoryPage() {
               >
                 <defs>
                   <linearGradient id="colorSavings" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%"  stopColor="#e08525" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#e08525" stopOpacity={0.0} />
+                    <stop offset="5%"  stopColor="hsl(var(--accent))" stopOpacity={0.35} />
+                    <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
                 <XAxis
                   dataKey="month"
-                  stroke="#7a6b5e"
+                  stroke="hsl(var(--muted-foreground))"
                   fontSize={12}
                   tickLine={false}
                   axisLine={false}
                 />
                 <YAxis
-                  stroke="#7a6b5e"
+                  stroke="hsl(var(--muted-foreground))"
                   fontSize={12}
                   tickLine={false}
                   axisLine={false}
@@ -66,23 +66,22 @@ export default function HistoryPage() {
                 <CartesianGrid
                   strokeDasharray="3 3"
                   vertical={false}
-                  stroke="#d8d0c4"
+                  stroke="hsl(var(--border))"
                 />
                 <Tooltip
                   formatter={(value: any) => [`$${value}`, "Monthly Savings"]}
                   contentStyle={{
-                    backgroundColor: "#faf8f4",
-                    borderColor: "#d8d0c4",
-                    borderRadius: "8px",
-                    color: "#2e2118",
+                    backgroundColor: "hsl(var(--popover))",
+                    borderColor: "hsl(var(--border))",
+                    borderRadius: "var(--radius)",
+                    color: "hsl(var(--popover-foreground))",
                     fontSize: "12px",
-                    boxShadow: "none",
                   }}
                 />
                 <Area
                   type="monotone"
                   dataKey="savings"
-                  stroke="#e08525"
+                  stroke="hsl(var(--accent))"
                   strokeWidth={2.5}
                   fillOpacity={1}
                   fill="url(#colorSavings)"
@@ -106,7 +105,7 @@ export default function HistoryPage() {
             </div>
             <Badge
               variant="outline"
-              className="bg-card border-amber text-amber font-semibold self-start sm:self-auto"
+              className="bg-accent/10 border-accent/30 text-accent font-semibold self-start sm:self-auto"
             >
               Saved $320/mo
             </Badge>

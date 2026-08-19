@@ -122,11 +122,11 @@ export function StickyStackCard({
         {/* Main Card Content */}
         {children}
 
-        {/* 3D Depth Dimming Overlay (Graphite shade on overlap) */}
+        {/* 3D Depth Dimming Overlay */}
         <motion.div
           aria-hidden="true"
           style={{ opacity: overlayOpacity }}
-          className="pointer-events-none absolute inset-0 bg-[#202020] z-20 transition-opacity"
+          className="pointer-events-none absolute inset-0 bg-foreground/10 dark:bg-black/40 z-20 transition-opacity"
         />
       </motion.div>
     </div>
