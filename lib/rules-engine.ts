@@ -1,156 +1,153 @@
 // lib/rules-engine.ts
 
-// 1. Define our TypeScript Interfaces
 export interface CloudResource {
-    id: string;
-    resource_type: 'EC2' | 'RDS' | 'EBS' | 'ELB' | 'S3' | 'Snapshot';
-    resource_identifier: string;
-    config: any;
-    utilization_metrics: any;
-    simulated_monthly_cost: number;
+  id: string;
+  type: 'EC2' | 'RDS' | 'EBS' | 'ELB' | 'S3';
+  region: string;
+  state?: string;
+  tags: string[];
+  metrics?: {
+    cpuUtilization?: number; // percentage 0-100
+    networkIn?: number;
+    activeConnections?: number;
+  };
+  configuration?: {
+    volumeSize?: number; // GB
+    instanceType?: string;
+    ageDays?: number;
+    hasLifecyclePolicy?: boolean;
+  };
+  monthlyCost: number;
 }
 
 export interface Finding {
-    resource_id: string;
-    rule_type: string;
-    severity: 'low' | 'medium' | 'high';
-    estimated_monthly_waste: number;
-    details: string;
+  resourceId: string;
+  ruleType: 'idle_instance' | 'oversized_instance' | 'unattached_volume' | 'idle_load_balancer' | 'stale_snapshot' | 's3_no_lifecycle';
+  description: string;
+  suggestedAction: string;
+  estimatedWaste: number;
+  severity: 'Low' | 'Medium' | 'High';
 }
 
-// 2. Individual Rule Functions (Pure & Independently Testable)
-
-// Rule 1: Idle EC2 Instance
-export function checkIdleEC2(resource: CloudResource): Finding | null {
-    if (resource.resource_type !== 'EC2') return null;
-    
-    const cpuUtilization = resource.utilization_metrics?.cpu_percentage || 0;
-    const state = resource.config?.state || 'running';
-
-    if (state === 'running' && cpuUtilization < 5) {
-        return {
-            resource_id: resource.id,
-            rule_type: 'idle_instance',
-            severity: 'high',
-            estimated_monthly_waste: resource.simulated_monthly_cost,
-            details: `EC2 instance ${resource.resource_identifier} is running but CPU utilization is only ${cpuUtilization}%.`
-        };
-    }
-    return null;
+// Hardened: Pure functions with nullish coalescing and explicit metric checks
+export function detectIdleInstance(resource: CloudResource): Finding | null {
+  if (resource.type !== 'EC2' && resource.type !== 'RDS') return null;
+  const cpu = resource.metrics?.cpuUtilization ?? 100;
+  
+  if (cpu < 1.0 && resource.state === 'running') {
+    return {
+      resourceId: resource.id,
+      ruleType: 'idle_instance',
+      description: `${resource.type} instance has CPU utilization < 1% while running.`,
+      suggestedAction: 'terminate',
+      estimatedWaste: resource.monthlyCost,
+      severity: 'High'
+    };
+  }
+  return null;
 }
 
-// Rule 2: Oversized EC2 Instance
-export function checkOversizedEC2(resource: CloudResource): Finding | null {
-    if (resource.resource_type !== 'EC2') return null;
-
-    const cpuUtilization = resource.utilization_metrics?.cpu_percentage || 0;
-    const instanceType = resource.config?.instance_type || 'unknown';
-
-    if (cpuUtilization > 5 && cpuUtilization < 30) {
-        return {
-            resource_id: resource.id,
-            rule_type: 'oversized_instance',
-            severity: 'medium',
-            estimated_monthly_waste: resource.simulated_monthly_cost * 0.5,
-            details: `EC2 instance ${resource.resource_identifier} (${instanceType}) has low CPU utilization (${cpuUtilization}%). Recommend right-sizing.`
-        };
-    }
-    return null;
+export function detectOversizedInstance(resource: CloudResource): Finding | null {
+  if (resource.type !== 'EC2' && resource.type !== 'RDS') return null;
+  const cpu = resource.metrics?.cpuUtilization ?? 100;
+  
+  if (cpu > 1.0 && cpu < 10.0) {
+    return {
+      resourceId: resource.id,
+      ruleType: 'oversized_instance',
+      description: `${resource.type} instance CPU utilization is between 1-10%, indicating it is heavily oversized.`,
+      suggestedAction: 'resize',
+      estimatedWaste: resource.monthlyCost * 0.5, // Assume 50% savings from downsizing
+      severity: 'Medium'
+    };
+  }
+  return null;
 }
 
-// Rule 3: Unattached EBS Volume
-export function checkUnattachedEBS(resource: CloudResource): Finding | null {
-    if (resource.resource_type !== 'EBS') return null;
-
-    const attachmentState = resource.config?.state || 'attached';
-
-    if (attachmentState === 'available' || attachmentState === 'unattached') {
-        return {
-            resource_id: resource.id,
-            rule_type: 'unattached_volume',
-            severity: 'medium',
-            estimated_monthly_waste: resource.simulated_monthly_cost,
-            details: `EBS Volume ${resource.resource_identifier} is unattached and accruing costs.`
-        };
-    }
-    return null;
+export function detectUnattachedVolume(resource: CloudResource): Finding | null {
+  if (resource.type !== 'EBS') return null;
+  if (resource.state === 'available' || resource.metrics?.activeConnections === 0) {
+    return {
+      resourceId: resource.id,
+      ruleType: 'unattached_volume',
+      description: 'EBS volume is unattached and incurring costs.',
+      suggestedAction: 'delete',
+      estimatedWaste: resource.monthlyCost,
+      severity: 'Medium'
+    };
+  }
+  return null;
 }
 
-// Rule 4: Idle Load Balancer
-export function checkIdleELB(resource: CloudResource): Finding | null {
-    if (resource.resource_type !== 'ELB') return null;
-
-    const requestCount = resource.utilization_metrics?.request_count || 0;
-
-    if (requestCount === 0) {
-        return {
-            resource_id: resource.id,
-            rule_type: 'idle_load_balancer',
-            severity: 'medium',
-            estimated_monthly_waste: resource.simulated_monthly_cost,
-            details: `Load Balancer ${resource.resource_identifier} has 0 requests flowing through it.`
-        };
-    }
-    return null;
+export function detectIdleLoadBalancer(resource: CloudResource): Finding | null {
+  if (resource.type !== 'ELB') return null;
+  const connections = resource.metrics?.activeConnections ?? 100;
+  
+  if (connections === 0) {
+    return {
+      resourceId: resource.id,
+      ruleType: 'idle_load_balancer',
+      description: 'ELB has 0 active healthy targets.',
+      suggestedAction: 'delete',
+      estimatedWaste: resource.monthlyCost,
+      severity: 'Medium'
+    };
+  }
+  return null;
 }
 
-// Rule 5: Stale Snapshot
-export function checkStaleSnapshot(resource: CloudResource): Finding | null {
-    if (resource.resource_type !== 'Snapshot') return null;
-
-    const daysOld = resource.config?.age_in_days || 0;
-
-    if (daysOld > 30) {
-        return {
-            resource_id: resource.id,
-            rule_type: 'stale_snapshot',
-            severity: 'low',
-            estimated_monthly_waste: resource.simulated_monthly_cost,
-            details: `Snapshot ${resource.resource_identifier} is ${daysOld} days old and likely no longer needed.`
-        };
-    }
-    return null;
+export function detectStaleSnapshot(resource: CloudResource): Finding | null {
+  // Assuming snapshots are tracked as S3 or EBS with ageDays configuration
+  const age = resource.configuration?.ageDays ?? 0;
+  
+  if (age > 90) {
+    return {
+      resourceId: resource.id,
+      ruleType: 'stale_snapshot',
+      description: `Snapshot is ${age} days old (older than 90 days).`,
+      suggestedAction: 'delete',
+      estimatedWaste: resource.monthlyCost,
+      severity: 'Low'
+    };
+  }
+  return null;
 }
 
-// Rule 6: S3 with no lifecycle policy
-export function checkS3Lifecycle(resource: CloudResource): Finding | null {
-    if (resource.resource_type !== 'S3') return null;
-
-    const hasLifecyclePolicy = resource.config?.has_lifecycle_policy || false;
-
-    if (!hasLifecyclePolicy) {
-        return {
-            resource_id: resource.id,
-            rule_type: 's3_no_lifecycle',
-            severity: 'low',
-            estimated_monthly_waste: resource.simulated_monthly_cost * 0.2,
-            details: `S3 Bucket ${resource.resource_identifier} has no lifecycle policy. Data is not being archived or cleaned up.`
-        };
-    }
-    return null;
+export function detectS3NoLifecycle(resource: CloudResource): Finding | null {
+  if (resource.type !== 'S3') return null;
+  const hasPolicy = resource.configuration?.hasLifecyclePolicy ?? true;
+  
+  if (!hasPolicy) {
+    return {
+      resourceId: resource.id,
+      ruleType: 's3_no_lifecycle',
+      description: 'S3 bucket has no lifecycle policy configured, leading to unmanaged storage growth.',
+      suggestedAction: 'add_lifecycle_policy',
+      estimatedWaste: resource.monthlyCost * 0.3,
+      severity: 'Low'
+    };
+  }
+  return null;
 }
 
-// 3. Master Runner Function
+// Main engine runner
 export function runRulesEngine(resources: CloudResource[]): Finding[] {
-    const findings: Finding[] = [];
-    
-    const rules = [
-        checkIdleEC2,
-        checkOversizedEC2,
-        checkUnattachedEBS,
-        checkIdleELB,
-        checkStaleSnapshot,
-        checkS3Lifecycle
+  const findings: Finding[] = [];
+  
+  for (const resource of resources) {
+    const checks = [
+      detectIdleInstance(resource),
+      detectOversizedInstance(resource),
+      detectUnattachedVolume(resource),
+      detectIdleLoadBalancer(resource),
+      detectStaleSnapshot(resource),
+      detectS3NoLifecycle(resource)
     ];
-
-    for (const resource of resources) {
-        for (const rule of rules) {
-            const finding = rule(resource);
-            if (finding) {
-                findings.push(finding);
-            }
-        }
+    
+    for (const finding of checks) {
+      if (finding) findings.push(finding);
     }
-
-    return findings;
+  }
+  
+  return findings;
 }
